@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Dhizuku Device Admin 策略声明。
+    关键：<support-transfer-ownership /> 让系统 DeviceAdminInfo.supportsTransferOwnership()
+    返回 true，从而允许外部 Device Owner（如 OwnDroid）通过 transferOwnership() 把 DO 转回 Dhizuku。
+-->
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <support-transfer-ownership />
+
+    <uses-policies>
+        <limit-password />
+        <watch-login />
+        <reset-password />
+        <force-lock />
+        <wipe-data />
+        <expire-password />
+        <restricted-settings />
+        <set-global-proxy />
+        <set-screen-capture-disabled />
+    </uses-policies>
+</device-admin>
