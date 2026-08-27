@@ -116,6 +116,11 @@
             android:enabled="true"
             android:foregroundServiceType="remoteMessaging" />
 
+        <!--
+            DhizukuDAReceiver：在 device-admin xml 中加入 <support-transfer-ownership />
+            即可让 DeviceAdminInfo.supportsTransferOwnership() 返回 true，
+            从而允许 OwnDroid 通过 dpm.transferOwnership() 把 DO 转回 Dhizuku。
+        -->
         <receiver
             android:name=".server.DhizukuDAReceiver"
             android:exported="false"
@@ -123,6 +128,10 @@
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/dhizuku_device_admin" />
+            <!-- 以下 meta-data 为保险声明，部分框架会一并读取；真正生效的是 xml 里的 support-transfer-ownership -->
+            <meta-data
+                android:name="android.app.support_transfer_ownership"
+                android:value="true" />
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
                 <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
